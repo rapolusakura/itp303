@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+	<title>Student Page</title>
+	<style>
+		body {
+			background-color: lightgray; 
+		}
+		#content { 
+			background-color: white; 
+			padding: 10px;
+			position: relative;
+			margin-left: 2%; 
+			margin-right: 2%; 
+		}
+		img {
+			width: 100%;
+		}
+		.overlay {
+			position: absolute;
+			display: none; 
+		}
+		#row3 .col:hover img{
+		    opacity:0.5;
+		}
+		#row3 .col:hover .overlay{
+			display: block;
+			opacity: 1; 
+		}
+		#rating {
+			width: 100px; 
+			height: 25px;
+		}
+		#header {
+			background-color: yellow;
+			text-align: center;
+			font-family: 'Fredoka One', cursive;
+			width: 100%;
+			padding: 5px; 
+		}
+		#promo-code {
+			background-color: lightgreen; 
+			padding: 2%;
+			border: 3px solid black;
+			margin-left: 25%; 
+			margin-right: 25%;
+		}
+		#row2 {
+			position: relative;
+		}
+		#row3 {
+			padding: 1%;
+			margin-left: auto; 
+			margin-right: auto;
+		}
+		#row3 .col {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			float: left;
+			padding: 2%;
+			position: relative;
+		}
+		#row3 img {
+			border: 3px solid black;
+			background-position: 50%; 
+		}
+		.clearfloat {
+			clear: both;
+		}
+		#right-title {
+			display: none;
+		}
+		#left-title {
+			display: block;
+		}
+		@media (min-width: 768px) {
+			#row3 .col {
+				width: 46%; 
+				float: left;
+			}
+			#right-title {
+				display: block;
+			}
+			#left-title {
+				display: none;
+			}
+			#row2 .col {
+				width: 48%;
+				float: left;
+				padding: 1%;
+			}
+
+		}
+		@media (min-width: 992px) {
+			#row3 .col {
+				width: 21%; 
+				float: left;
+			}
+			#right-title {
+				display: block;
+			}
+			#left-title {
+				display: none;
+			}
+			#row2 .col {
+				width: 48%;
+				float: left;
+				padding: 1%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<h1>Sakura's Pharmacy</h1>
+	</div>
+	<div id="content"> 
+		<div id="row2"> 
+			<div class="col">
+				<h2 id="left-title"> COVID-19 Vaccine </h2>
+				<img alt="vaccine" src="https://www.europeanpharmaceuticalreview.com/wp-content/uploads/shutterstock_1643122693.jpg" /> 
+				<p id="promo-code"> Use promo code COVID to get 19% off! </p>
+			</div>
+			<div class="col">
+				<h2 id="right-title"> COVID-19 Vaccine </h2>
+				<h3> Price: $2349.99 </h3>
+				<img alt="rating" id="rating" src="https://i.imgur.com/9uSgLoU.png" /> 4,034,234 ratings
+				<ul> 
+					<li> More than 100 vaccine efforts are currently underway in the global push to stop the COVID-19 pandemic, according to the World Health Organization. Which are most likely to work? And how long will it take? We’ve compiled a list of the top 5 most promising candidate vaccine platforms, with a brief summary of relevant details. We’ll keep this page updated so come back regularly to learn the latest developments. </li>
+					<li> Adenoviruses, which exist in the wild in humans and typically cause mild infections such as the common cold, have been genetically engineered to express viral antigens found in SARS-CoV-2, usually those of the infamous spike protein that the coronavirus uses to break into human cells. These engineered adenoviruses, when put into a vaccine, trigger an immune response in the human body, protecting against COVID-19. </li>
+					<li> Probably the highest-profile effort is the ChAdOx1 nCoV-19 vaccine candidate from Oxford University’s Jenner Institute. (ChAdOx1 stands for “chimpanzee adenovirus Oxford 1.”) The Chinese company CanSino Biologics — the medical science arm of the People’s Liberation Army, no less — has completed Phase 1 trials with an adenovirus vector vaccine called Ad5-nCoV. </li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearfloat"></div>
+
+		<div id="row3"> 
+			<h3> Related Products </h3>
+			<div class="col">
+				<div class="overlay">
+					<h2 class="label"> Corona Beer </h2>
+				</div>
+				<img alt="corona beer" src="https://target.scene7.com/is/image/Target/GUEST_d44d317d-44a6-4ba2-8031-093dc8e68c74?wid=488&hei=488&fmt=pjpeg" /> 
+			</div>
+			<div class="col">
+				<div class="overlay">
+					<h2 class="label"> Gloves </h2>
+				</div>
+				<img alt="gloves" src="https://images.homedepot-static.com/productImages/f665086b-77bd-4d77-b6b9-4a4c4a8e9412/svn/hdx-disposable-gloves-hdx00290-10-64_1000.jpg" /> 
+			</div>
+			<div class="col">
+				<div class="overlay">
+					<h2 class="label"> Mask </h2>
+				</div>
+				<img alt="mask" src="https://img1.quadmed.com/prodimage/ProductImage/800/e2bb39c5-2215-41f9-8653-33714d76b7ae.jpg" />
+			</div>
+			<div class="col">
+				<div class="overlay">
+					<h2 class="label"> Toilet Paper </h2>
+				</div>
+				<img alt="toilet paper" src="https://mcdonaldpaper.com/media/catalog/product/cache/3fba745dcec88e97bfe808bedc471260/b/w/bwk6145.jpg" /> 	
+			</div>
+			<div class="clearfloat"></div>
+		</div>
+	</div>
+</body>
+</html>
