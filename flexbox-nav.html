@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<style> 
+	a {
+		background-color: pink; 
+		padding: 1%; 
+		text-align: center;
+	}
+	a:hover {
+		background-color: lightgray;
+	}
+	.container {
+  		display: flex;
+  		flex-wrap: wrap;
+	}
+	.container a {
+		width: 98%; 
+	}
+	@media (min-width: 768px) {
+		.container a {
+			width: 48%; 
+		}
+	}
+	@media (min-width: 992px) {
+		.container a {
+			width: 23%; 
+		}
+	}
+</style>
+</head>
+<body> 
+	<div class="container"> 
+		<a href="#"> Home </a>
+		<a href="#"> About </a>
+		<a href="#"> Team </a>
+		<a href="#"> Contact </a>
+	</div>
+</body>
+
+</html>
