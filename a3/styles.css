@@ -36,7 +36,7 @@ a {
 	padding-left: 6%; 
 }
 .custRow {
-	padding: 4%; 
+	padding: 2%; 
 	display: flex; 
 	justify-content: center;
 }
@@ -53,6 +53,15 @@ a {
 	padding-left: 8%; 
 }
 
-@media (min-width: 768px) {
+#desktopNav {
+	display: none; 
+}
 
+@media (min-width: 768px) {
+	#desktopNav {
+		display: block;
+	}
+	#mobileNav {
+		display: none; 
+	}
 }
