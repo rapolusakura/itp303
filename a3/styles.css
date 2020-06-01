@@ -1,14 +1,6 @@
 a {
 	padding: 1%; 
 }
-a:hover {
-	background-color: lightgray;
-}
-
-img {
-	width: 500px;
-	height: 500px; 
-}
 
 * {
 	box-sizing: border-box; 
@@ -22,4 +14,24 @@ img {
 .NavBar {
 	margin: 0px;
 	padding: 0px; 
+}
+.activeCustom {
+	color:white; 
+}
+
+.inactiveCustom {
+	color:gray;
+}
+
+.mainImage {
+	position: relative;
+	padding: 0px;
+}
+.header {
+	position: absolute;
+	justify-content: center;
+	color: blueviolet; 
+	font-size: 10vw; 
+	padding: 3%;
+	padding-left: 6%; 
 }
