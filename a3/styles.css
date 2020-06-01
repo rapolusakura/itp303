@@ -1,0 +1,26 @@
+a {
+	padding: 1%; 
+	text-align: center;
+}
+a:hover {
+	background-color: lightgray;
+}
+
+img {
+	width: 500px;
+	height: 500px; 
+}
+
+* {
+	box-sizing: border-box; 
+	font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+	font-size: 20px; 
+}
+
+.NavBar {
+	margin: 0px;
+	padding: 0px; 
+}
