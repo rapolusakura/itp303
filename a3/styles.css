@@ -35,3 +35,24 @@ a {
 	padding: 3%;
 	padding-left: 6%; 
 }
+.custRow {
+	padding: 4%; 
+	display: flex; 
+	justify-content: center;
+}
+
+.custCol {
+	padding: 1%;
+}
+
+.feat1 {
+	padding-right: 5%; 
+}
+
+.feat2 {
+	padding-left: 8%; 
+}
+
+@media (min-width: 768px) {
+
+}
