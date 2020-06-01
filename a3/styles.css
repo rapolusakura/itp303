@@ -35,6 +35,14 @@ a {
 	padding: 3%;
 	padding-left: 6%; 
 }
+.team {
+	position: absolute;
+	justify-content: center;
+	color: blueviolet; 
+	font-size: 3vw; 
+	padding: 3%;
+	padding-left: 6%; 
+}
 .custRow {
 	padding: 2%; 
 	display: flex; 
@@ -53,8 +61,34 @@ a {
 	padding-left: 8%; 
 }
 
+.name {
+	font-size: 4vw; 
+	font-family: 'Oswald', sans-serif;
+}
+.job {
+	font-size: 3vw; 
+	padding-bottom: 2%; 
+}
+.description {
+	padding-bottom: 4%; 
+}
+
 #desktopNav {
 	display: none; 
+}
+
+.profile {
+	width: 50%; 
+}
+
+.member {
+	justify-content: center; 
+	text-align: center;
+}
+
+.footer {
+	padding-left: 3%; 
+	padding-bottom: 1%; 
 }
 
 @media (min-width: 768px) {
