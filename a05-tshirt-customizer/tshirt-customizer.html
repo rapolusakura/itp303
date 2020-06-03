@@ -98,6 +98,8 @@
 </body>
 <script type="text/javascript">
 var textInput = document.getElementById("tshirt-text"); 
+var font = document.getElementById("tshirt-font"); 
+var fontSize = document.getElementById("tshirt-font-size"); 
 
 textInput.addEventListener('keyup', function() {
 	if(textInput.value.length > 20) {
@@ -108,7 +110,19 @@ textInput.addEventListener('keyup', function() {
 		document.getElementById("tshirt-preview").innerHTML = textInput.value; 
 		textInput.classList.remove("is-invalid");
 	}
-}) 
+}); 
+
+font.addEventListener('change', (e) => {
+	let newFont = e.target.value; 
+	document.getElementById("tshirt-preview").style.fontFamily = newFont; 
+});
+
+fontSize.addEventListener('change', (e) => {
+
+	let newSize = e.target.value; 
+		console.log(newSize); 
+	document.getElementById("tshirt-preview").style.fontSize = newSize + "px"; 
+});
 
 </script>
 </html>
