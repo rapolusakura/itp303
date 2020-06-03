@@ -103,9 +103,11 @@ var font = document.getElementById("tshirt-font");
 var fontSize = document.getElementById("tshirt-font-size"); 
 var fontColors = document.querySelector(".tshirt-colors").children;
 var form = document.getElementById("tshirt-form"); 
+var remove = document.getElementById("btn-remove"); 
 var subtotal = 0.0; 
 var total = 0.0; 
 var tax = 0.0; 
+var quantity = 0; 
 
 textInput.addEventListener('keyup', function() {
 	if(textInput.value.length > 20) {
@@ -141,6 +143,31 @@ for(var i = 0; i < fontColors.length; i++) {
 	}); 
 }
 
+var addShirt = function() {
+	quantity++; 
+	subtotal += 20;
+	tax = subtotal*0.095; 
+	total = subtotal + tax;
+	updateCart(); 
+}
+
+var removeShirt = function() {
+	quantity = 0; 
+	tax = 0; 
+	subtotal = 0; 
+	total = 0; 
+	document.getElementById("cart-message").style.display = "inline"; 
+	document.getElementsByClassName("cart-item")[0].classList.add("hide"); 
+	updateCart(); 
+}
+
+var updateCart = function() {
+	document.getElementById("qty").innerHTML = quantity; 
+	document.getElementById("subtotal").innerHTML = "$" + subtotal.toFixed(2); 
+	document.getElementById("tax").innerHTML = "$" + tax.toFixed(2); 
+	document.getElementById("total").innerHTML = "$" + total.toFixed(2);
+}
+
 var addToCart = function(event) {
 	if(textInput.value === "") {
 		document.querySelector(".error-message").innerHTML = "Text is required"; 
@@ -149,11 +176,15 @@ var addToCart = function(event) {
 	} else {
 		document.querySelector(".error-message").innerHTML = ""; 
 		document.getElementById("cart-message").style.display = "none"; 
+		document.getElementsByClassName("cart-item")[0].classList.remove("hide"); 
+		addShirt(); 
 	}
     event.preventDefault();
 };
 
 form.addEventListener("submit", addToCart, true);
+
+remove.addEventListener("click", removeShirt); 
 
 </script>
 </html>
