@@ -98,8 +98,23 @@
 </body>
 <script type="text/javascript">
 var textInput = document.getElementById("tshirt-text"); 
+var preview = document.getElementById("tshirt-preview")
 var font = document.getElementById("tshirt-font"); 
 var fontSize = document.getElementById("tshirt-font-size"); 
+var fontColors = document.querySelector(".tshirt-colors").children; 
+
+for(var i = 0; i < fontColors.length; i++) {
+	fontColors[i].addEventListener('click', function() {
+		for(var j =0; j < fontColors.length; j++) {
+			if(fontColors[j].attributes[1].value === this.attributes[1].value) {
+				preview.style.color = this.attributes[1].value; 
+				this.classList.add("selected"); 
+			} else {
+				fontColors[j].classList.remove("selected"); 
+			}
+		}
+	}); 
+}
 
 textInput.addEventListener('keyup', function() {
 	if(textInput.value.length > 20) {
@@ -118,9 +133,7 @@ font.addEventListener('change', (e) => {
 });
 
 fontSize.addEventListener('change', (e) => {
-
 	let newSize = e.target.value; 
-		console.log(newSize); 
 	document.getElementById("tshirt-preview").style.fontSize = newSize + "px"; 
 });
 
