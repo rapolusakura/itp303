@@ -101,20 +101,11 @@ var textInput = document.getElementById("tshirt-text");
 var preview = document.getElementById("tshirt-preview")
 var font = document.getElementById("tshirt-font"); 
 var fontSize = document.getElementById("tshirt-font-size"); 
-var fontColors = document.querySelector(".tshirt-colors").children; 
-
-for(var i = 0; i < fontColors.length; i++) {
-	fontColors[i].addEventListener('click', function() {
-		for(var j =0; j < fontColors.length; j++) {
-			if(fontColors[j].attributes[1].value === this.attributes[1].value) {
-				preview.style.color = this.attributes[1].value; 
-				this.classList.add("selected"); 
-			} else {
-				fontColors[j].classList.remove("selected"); 
-			}
-		}
-	}); 
-}
+var fontColors = document.querySelector(".tshirt-colors").children;
+var form = document.getElementById("tshirt-form"); 
+var subtotal = 0.0; 
+var total = 0.0; 
+var tax = 0.0; 
 
 textInput.addEventListener('keyup', function() {
 	if(textInput.value.length > 20) {
@@ -136,6 +127,33 @@ fontSize.addEventListener('change', (e) => {
 	let newSize = e.target.value; 
 	document.getElementById("tshirt-preview").style.fontSize = newSize + "px"; 
 });
+
+for(var i = 0; i < fontColors.length; i++) {
+	fontColors[i].addEventListener('click', function() {
+		for(var j =0; j < fontColors.length; j++) {
+			if(fontColors[j].attributes[1].value === this.attributes[1].value) {
+				preview.style.color = this.attributes[1].value; 
+				this.classList.add("selected"); 
+			} else {
+				fontColors[j].classList.remove("selected"); 
+			}
+		}
+	}); 
+}
+
+var addToCart = function(event) {
+	if(textInput.value === "") {
+		document.querySelector(".error-message").innerHTML = "Text is required"; 
+	} else if (textInput.length > 20) {
+		document.querySelector(".error-message").innerHTML = "Text cannot be longer than 20 characters"; 
+	} else {
+		document.querySelector(".error-message").innerHTML = ""; 
+		document.getElementById("cart-message").style.display = "none"; 
+	}
+    event.preventDefault();
+};
+
+form.addEventListener("submit", addToCart, true);
 
 </script>
 </html>
