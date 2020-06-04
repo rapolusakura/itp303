@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact List using Objects</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-4">
+			<h1 class="col-12">Contacts</h1>
+			<h2 class="col-12 mt-4">New Contact</h2>
+			<div class="col-12 mt-4">
+				<form id="contact-form">
+					<div class="form-row">
+
+						<div class="col-12 mt-2 col-sm-3 mt-sm-0">
+							<label for="fname" class="sr-only">First Name:</label>
+							<input type="text" class="form-control" id="fname" placeholder="First Name">
+						</div> <!-- .col -->
+
+						<div class="col-12 mt-2 col-sm-3 mt-sm-0">
+							<label for="lname" class="sr-only">Last Name:</label>
+							<input type="text" class="form-control" id="lname" placeholder="Last Name">
+						</div> <!-- .col -->
+
+						<div class="col-12 mt-2 col-sm-3 mt-sm-0">
+							<label for="email" class="sr-only">Email:</label>
+							<input type="text" class="form-control" id="email" placeholder="Email">
+						</div> <!-- .col -->
+
+						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
+							<button role="button" type="submit" class="btn btn-primary">Add</button>
+						</div> <!-- .col -->
+
+					</div> <!-- .form-row -->
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+			<h2 class="col-12 mt-4">List:</h2>
+		</div> <!-- .row -->
+
+		<div class="row">
+			<div class="col-12 mt-3">
+				<button id="show-three-btn" class="btn btn-outline-primary mb-3">Show First Three Contacts</button>
+				<button id="show-all-btn" class="btn btn-outline-primary mb-3">Show All Contacts</button>
+				<button id="delete-btn" class="btn btn-outline-danger mb-3">Delete All</button>
+			</div> <!-- .col -->
+		</div><!-- .row -->
+
+		<div class="row">
+			<div class="col-12 mt-3">
+				<ul class="list-group" id="contact-list">
+					<!-- Below is the template that all contacts should follow -->
+					<!-- <li class="list-group-item">Trojan, Tommy (ttrojan@usc.edu)</li> -->
+				</ul>
+			</div> <!-- .col -->
+
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+		
+		// Use this array to keep track of contacts
+		let contacts = [];
+		var form = document.getElementById("contact-form"); 
+		var showAllContactsBtn = document.getElementById("show-all-btn"); 
+		var showThreeContactsBtn = document.getElementById("show-three-btn"); 
+		var deleteAllBtn = document.getElementById("delete-btn"); 
+		var contactList = document.getElementById("contact-list"); 
+
+		var addContact = function(event) {
+			var fname = document.getElementById("fname").value; 
+			var lname = document.getElementById("lname").value; 
+			var email = document.getElementById("email").value; 
+
+			if(fname !== "" && lname !== "" &&  email !== "") {
+				var contact = {
+					fname: fname, 
+					lname: lname, 
+					email: email
+				}; 
+
+				contacts.push(contact); 
+			}
+			event.preventDefault();
+		}
+
+		var showAllContacts = function() {
+			clearContacts(); 
+			for(var i =0; i<contacts.length; i++) {
+				var contact = document.createElement("LI"); 
+				contact.classList.add("list-group-item"); 
+				contact.innerHTML = contacts[i].lname + ", " + contacts[i].fname + " (" + contacts[i].email + ")"; 
+				contactList.appendChild(contact);
+				//<li class="list-group-item">Trojan, Tommy (ttrojan@usc.edu)</li>
+			}
+		}
+
+		var showThreeContacts = function() {
+			clearContacts(); 
+			var n = contacts.length < 3 ? contacts.length : 3; 
+			for(var i = 0; i<n; i++) {
+				var contact = document.createElement("LI"); 
+				contact.classList.add("list-group-item"); 
+				contact.innerHTML = contacts[i].lname + ", " + contacts[i].fname + " (" + contacts[i].email + ")"; 
+				contactList.appendChild(contact);
+			}
+		}
+		
+		var clearContacts = () => {
+			contactList.innerHTML = ''; 
+		}
+
+		var deleteAllContacts = function() {
+			clearContacts(); 
+			contacts = []; 
+		}
+
+		form.addEventListener("submit", addContact, true);
+		showAllContactsBtn.addEventListener('click', showAllContacts); 
+		deleteAllBtn.addEventListener('click', deleteAllContacts); 
+		showThreeContactsBtn.addEventListener('click', showThreeContacts); 
+
+
+	</script>
+
+</body>
+</html>
