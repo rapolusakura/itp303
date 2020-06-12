@@ -1,0 +1,16 @@
+#itemList {
+	text-align: center; 
+}
+
+#weather {
+	border: 2px black solid;
+	text-align: center;
+}
+
+#content {
+	text-align: center; 
+}
+
+#weather-info {
+	display: inline;
+}
