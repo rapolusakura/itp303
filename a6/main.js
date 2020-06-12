@@ -1,39 +1,56 @@
-		
-// Use this array to keep track of contacts
 var form = document.getElementById("search-form"); 
 
 function displayMovie(item, index) {
 	var movies = document.getElementById("movies"); 
 	var div = document.createElement("div"); 
-	div.innerHTML = item.title + " " + item.release_date + " https://image.tmdb.org/t/p/w500" + item.poster_path;  
+	var poster_path = item.poster_path == null ? "NO IMAGE AVAILABLE" : "<img src=\'https://image.tmdb.org/t/p/w500" 
+		+ item.poster_path + "\'>"; 
+	var overview = item.overview.length > 200 ? item.overview.substring(0, 200) + "..." : item.overview; 
+
+	div.className = "col-md-3 col-md-4 col-md-6 movie darken"
+
+	div.innerHTML = poster_path + item.title + " " + item.release_date
+		+ " " + overview + " " + item.vote_count + " "
+		+ item.vote_average; 
 	movies.appendChild(div); 
 }
 
-var ajax = function(event) {
-	$.get("https://api.themoviedb.org/3/movie/now_playing?api_key=c4f2023ec81f7fa2b3508c0379329db0&language=en-US", function(data, status){
-	  console.log(data.results.length); 
-	  data.results.forEach(displayMovie);
-	//	  $("#weather").html("Today's weather in Los Angeles: " + temp + " " + desc + ". Feels like " + feels_like);
-	});
+var ajax = function(endpoint, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+	    if (xhr.readyState == XMLHttpRequest.DONE) {
+	        callback(JSON.parse(xhr.response));  
+	    }
+	}
+	xhr.open('GET', endpoint, true);
+	xhr.send(null);
+}
+
+function nowPlaying(event) {
+	ajax("https://api.themoviedb.org/3/movie/now_playing?api_key=c4f2023ec81f7fa2b3508c0379329db0&language=en-US", function(res) {
+		document.getElementById("movies").innerHTML = ""; 
+		//show the number of results??
+		res.results.forEach(displayMovie);
+	}); 
+}
+
+var searchMovie = () => {
+	var query = document.getElementById("search").value; 
+	ajax("https://api.themoviedb.org/3/search/movie?api_key=c4f2023ec81f7fa2b3508c0379329db0&language=en-US&query=" + query + "&page=1&include_adult=false", function(data) {
+		console.log(data); 
+		if(data.total_results == 0) {
+			console.log("empty"); 
+			document.getElementById("movies").innerHTML = "no movies"; 
+		} else {
+			document.getElementById("movies").innerHTML = ""; 
+			data.results.forEach(displayMovie);
+		}
+	}); 
 	event.preventDefault();
 }
 
-form.addEventListener("submit", ajax, true);
+
+form.addEventListener("submit", searchMovie, true);
 
 
-
-// var showInTheaters = () => {
-// 	var xhttp = new XMLHttpRequest();
-// 	xhttp.onreadystatechange = function() {
-// 	    if (this.readyState == 4 && this.status == 200) {
-// 	       // Typical action to be performed when the document is ready:
-// 	       document.getElementById("movies").innerHTML = xhttp.responseText;
-// 	    }
-// 	};
-// 	xhttp.open("GET", "./style.css", true);
-// 	xhttp.send();	
-// }
-
-
-
-// window.onload(showInTheaters()); 
+document.onload = nowPlaying(); 
