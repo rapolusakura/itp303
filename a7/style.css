@@ -14,3 +14,11 @@
 #weather-info {
 	display: inline;
 }
+
+.active {
+	background-color: coral; 
+}
+
+.faded {
+	background-color: blue; 
+}
