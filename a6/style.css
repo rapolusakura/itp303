@@ -1,18 +1,9 @@
 .container {background-color: coral;} 
 
-.movie {
-	width: 25%;
-}
-
 .darken {
-    display: block;
+    display: inline-block;
     padding: 0;
     position:relative
-}
-
-.darken img {
-	width: 25%; 
-    display: block;
 }
 
 .darken:hover img {
@@ -31,13 +22,24 @@ div {
 	visibility: none;
 }
 
+img {
+	max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+
+}
+
 .overlay {
-  position: absolute; 
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.7); /* Black see-through */
-	top: 3px;
-	left: 16px;
-  width: 100%;
-  opacity: 0; 
-  padding: 20px;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;      
+	opacity: 0;   
+	text-align: center;
+	top: 0; /* Adjust this value to move the positioned div up and down */
+	background: rgba(0, 0, 0, 0.8);
+	font-family: Arial,sans-serif;
+	color: #fff;
+	width: 90%; /* Set the width of the positioned div */
+	height: 90%; 
 }

@@ -3,16 +3,32 @@ var form = document.getElementById("search-form");
 function displayMovie(item, index) {
 	var movies = document.getElementById("movies"); 
 	var div = document.createElement("div"); 
-	var poster_path = item.poster_path == null ? "NO IMAGE AVAILABLE" : "<img src=\'https://image.tmdb.org/t/p/w500" 
-		+ item.poster_path + "\'>"; 
+	var poster_path = null; 
+	if(item.poster_path == null) {
+		poster_path = document.createElement("div"); 
+		poster_path.innerHTML = "NO IMAGE AVAILABLE"; 
+	} else {
+		poster_path = document.createElement("img"); 
+		poster_path.src = "https://image.tmdb.org/t/p/w500" + item.poster_path; 
+	}
+
 	var overview = item.overview.length > 200 ? item.overview.substring(0, 200) + "..." : item.overview; 
 
-	div.className = "col-md-3 col-md-4 col-md-6 movie darken"
+	div.className = "col-6 col-md-3 movie darken"; 
+	var overlay = document.createElement("div"); 
+	overlay.className = "overlay"; 
+	overlay.innerHTML = "**Rating: " + item.vote_average + " from " + item.vote_count + " votes**"; 
+	overlay.innerHTML += "\n" + overview; 
 
-	div.innerHTML = poster_path + item.title + " " + item.release_date
-		+ " " + overview + " " + item.vote_count + " "
-		+ item.vote_average; 
+	var p = document.createElement("p"); 
+	p.innerHTML = item.title + " " + item.release_date; 
+
+	div.appendChild(poster_path); 
+	div.appendChild(overlay); 
+	div.appendChild(p); 
+
 	movies.appendChild(div); 
+ 
 }
 
 var ajax = function(endpoint, callback) {
@@ -39,10 +55,10 @@ var searchMovie = () => {
 	ajax("https://api.themoviedb.org/3/search/movie?api_key=c4f2023ec81f7fa2b3508c0379329db0&language=en-US&query=" + query + "&page=1&include_adult=false", function(data) {
 		console.log(data); 
 		if(data.total_results == 0) {
-			console.log("empty"); 
-			document.getElementById("movies").innerHTML = "no movies"; 
+			document.getElementById("movies").innerHTML = "No movies with that search query."; 
 		} else {
 			document.getElementById("movies").innerHTML = ""; 
+			document.getElementById("results_length").innerHTML = "Showing 20 of " + data.total_results + " result(s)"; 
 			data.results.forEach(displayMovie);
 		}
 	}); 
@@ -52,5 +68,6 @@ var searchMovie = () => {
 
 form.addEventListener("submit", searchMovie, true);
 
-
-document.onload = nowPlaying(); 
+document.addEventListener('DOMContentLoaded', function() {
+    nowPlaying(); 
+}, false);
