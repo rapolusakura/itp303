@@ -20,7 +20,9 @@
 }
 
 .faded {
-	background-color: blue; 
+	background-color: lightgray; 
+	text-decoration-line: line-through;
+	font-style: italic;
 }
 
 ul {
@@ -30,4 +32,12 @@ ul {
 i {
 	position: absolute;
 	left: 20%; 
+}
+
+.plus {
+	display: inline;
+
+}
+.header {
+	
 }

@@ -18,16 +18,21 @@ $('#weather-location').on('change', function() {
 });
 
 var addItem = (task) => {
+	var newItem = $('<li>' + task + '</li>'); 
 	var i = $('<i class="fa fa-square-o" aria-hidden="true"></i>'); 
-	var newItem = $('<li>' + i + task + '</li>'); 
+	$(i).on('click', function(event) {
+		event.stopPropagation();
+		$(this).parent().fadeOut(500, () => {
+			$(this).parent().remove(); 
+		}); 
+	}); 
+	newItem.append(i); 
 	newItem.addClass("task"); 
 	newItem.addClass("active"); 
 	$(newItem).on('click', function(event) {
 		if($(this).hasClass('active')) {
 			newItem.removeClass('active'); 
 			newItem.addClass("faded"); 
-		} else if($(this).hasClass('faded')) {
-			$(this).remove(); 
 		}
 	}); 
 	$('#itemList').find('ul').append(newItem); 
@@ -37,15 +42,19 @@ $('.active').on('click', function(event) {
 	if($(this).hasClass('active')) {
 		$(this).removeClass('active'); 
 		$(this).addClass("faded"); 
-	} else if($(this).hasClass('faded')) {
-		$(this).remove(); 
 	}
 }); 
 
-$('i').on('click', function(event) {
+$('ul i').on('click', function(event) {
 	event.stopPropagation();
-	$(this).parent().remove(); 
+	$(this).parent().fadeOut(500, () => {
+		$(this).parent().remove(); 
+	}); 
 }); 
+
+$('#plus').on('click', function(event) {
+	$(this).next().fadeToggle(300); 
+})
 
 $('#name').keypress(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
