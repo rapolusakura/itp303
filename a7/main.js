@@ -53,7 +53,7 @@ $('ul i').on('click', function(event) {
 }); 
 
 $('#plus').on('click', function(event) {
-	$(this).next().fadeToggle(300); 
+	$('#name').slideToggle(300); 
 })
 
 $('#name').keypress(function(event){

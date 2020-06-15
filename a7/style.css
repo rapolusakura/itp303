@@ -1,22 +1,56 @@
 #itemList {
-	text-align: center; 
+	text-align: center;
+	width: 100%; 
+}
+
+ul {
+	padding-inline-start: 0px; 
 }
 
 #weather {
 	border: 2px black solid;
 	text-align: center;
+	background-color: #E0BBE4; 
+}
+
+#weather-location {
+	margin: 10px;
 }
 
 #content {
 	text-align: center; 
+	background-color: #D291BC; 
+	margin: 40px; 
+	box-shadow: 
+	     inset 0 -3em 3em rgba(0,0,0,0.1), 
+	           0 0  0 2px rgb(0,0,0),
+	           0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.container {
+	width: 600px; 
+	margin: 0 auto;
 }
 
 #weather-info {
 	display: inline;
 }
 
+#name {
+	width: 40%; 
+	padding: 20px; 
+	border: 2px solid gray;
+	border-radius: 8px;
+	font-size: 15px; 
+}
+
 .active {
-	background-color: coral; 
+	background-color: #F9F7E8; 
+}
+
+body {
+	background-color: #FFDFD3; 
+	font-family: 'Balsamiq Sans', cursive;
 }
 
 .faded {
@@ -27,17 +61,29 @@
 
 ul {
     list-style: none;
+    position: relative;
 }
 
 i {
+	left: 15%; 
 	position: absolute;
-	left: 20%; 
+}
+
+li:hover {
+	background-color: #FEC8D8; 
+}
+
+li {
+	padding: 10px; 
 }
 
 .plus {
-	display: inline;
-
+	margin-top: 15px; 
+	size: 30px; 
+	position: relative;
 }
+
 .header {
-	
+	background-color: #D291BC; 
+	font-size: 50px; 
 }

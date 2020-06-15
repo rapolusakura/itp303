@@ -1,6 +1,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
@@ -13,20 +14,25 @@
 			</select>
 			<div id="weather-info"></div>
 		</div> 
-			<div id="content"> 
-				<div> 
-					<h1 class="header"> To Do List </h1> 
+		<div id="content"> 
+			<div> 
+				<div class="header"> 
+					To Do List 
 					<i id="plus" class="fa fa-plus plus" aria-hidden="true"></i>
-					<input placeholder="Add item here" id="name" /> 
 				</div>
-				<div id="itemList"> 
-					<ul>
-						<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Make food </li>
-						<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Wash dishes </li>
-						<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Do homework </li>
-					</ul>
-				</div>
+				
 			</div>
+			<div> 
+				<input placeholder="Add item here" id="name" size="30"/> 
+			</div>
+			<div id="itemList"> 
+				<ul>
+					<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Make food </li>
+					<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Wash dishes </li>
+					<li class = "task active"><i class="fa fa-square-o" aria-hidden="true"></i> Do homework </li>
+				</ul>
+			</div>
+		</div>
 	</div> 
 <script src="./main.js"></script>
 </body>
