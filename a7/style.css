@@ -22,3 +22,12 @@
 .faded {
 	background-color: blue; 
 }
+
+ul {
+    list-style: none;
+}
+
+i {
+	position: absolute;
+	left: 20%; 
+}

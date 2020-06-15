@@ -17,35 +17,40 @@ $('#weather-location').on('change', function() {
 	});
 });
 
-$('#list-form').on('submit', function(event) {
-	event.preventDefault(); 
-	var taskInput = $('#name').val(); 
-	if(newItem !== "") {
-		var newItem = $('<li>' + taskInput + '</li>'); 
-		newItem.addClass("task"); 
-		newItem.addClass("active"); 
-		$(newItem).on('click', function(event) {
-			if($(this).hasClass('active')) {
-				newItem.removeClass('active'); 
-				newItem.addClass("faded"); 
-			} else if($(this).hasClass('faded')) {
-				$(this).remove(); 
-			}
-		}); 
-		$('#itemList').find('ul').prepend(newItem); 
+var addItem = (task) => {
+	var i = $('<i class="fa fa-square-o" aria-hidden="true"></i>'); 
+	var newItem = $('<li>' + i + task + '</li>'); 
+	newItem.addClass("task"); 
+	newItem.addClass("active"); 
+	$(newItem).on('click', function(event) {
+		if($(this).hasClass('active')) {
+			newItem.removeClass('active'); 
+			newItem.addClass("faded"); 
+		} else if($(this).hasClass('faded')) {
+			$(this).remove(); 
+		}
+	}); 
+	$('#itemList').find('ul').append(newItem); 
+}
+
+$('.active').on('click', function(event) {
+	if($(this).hasClass('active')) {
+		$(this).removeClass('active'); 
+		$(this).addClass("faded"); 
+	} else if($(this).hasClass('faded')) {
+		$(this).remove(); 
 	}
 }); 
 
-//class active
+$('i').on('click', function(event) {
+	event.stopPropagation();
+	$(this).parent().remove(); 
+}); 
 
-//class faded
-
-/*
-
-if(class List contains active){ 
-	remove active, add faded
-} if (class List contains faded) {
-	delete element
-}
-
-*/ 
+$('#name').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13' && $('#name').val() !== ""){
+    	addItem($('#name').val()); 
+    }
+        event.prevetDefault(); 
+});
